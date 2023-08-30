@@ -8,7 +8,7 @@
 import UIKit
 
 extension UILabel {
-    public func setLabel(text: String, type: String? = nil) {
+    public func setLabel(text: String = "", type: String? = nil) {
         var fontSize: CGFloat = Settings.questionLabelFontSize
         var textAlignment: NSTextAlignment = Settings.questionLabelTextAlignment
         var fontName: String = Settings.questionLabelFontName

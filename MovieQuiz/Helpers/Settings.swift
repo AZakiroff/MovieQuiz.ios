@@ -24,8 +24,13 @@ enum Settings {
     
     static let questionLabelFontSize: CGFloat = 23
     static let questionLabelTextAlignment: NSTextAlignment = .center
-    static let questionLabelFontName: String = "YSDisplay-Bold"
+    static let questionLabelFontName: String = "YSDisplay-Bold" //"YSDisplay-Bold"
     
+    static let posterBorderWidth: CGFloat = 8
     static let posterImageViewRadius: CGFloat = 15
+    
+    static let pauseAfterResponse: Double = 1.0
+    
+    static let totalQuestionAmount: Int = 10
 }
 
