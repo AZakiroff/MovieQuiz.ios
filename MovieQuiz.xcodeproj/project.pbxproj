@@ -18,7 +18,7 @@
 		AD7AFA552836189F00399704 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7AFA542836189F00399704 /* Array+Extensions.swift */; };
 		C0138CA02A978A1A00F5ACF0 /* UIImageView+setBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0138C9F2A978A1A00F5ACF0 /* UIImageView+setBorder.swift */; };
 		C0769A4C2A9DBF7A00CB8A9F /* StatisticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0769A4B2A9DBF7A00CB8A9F /* StatisticService.swift */; };
-		C0769A502A9F3C0A00CB8A9F /* RecordGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0769A4F2A9F3C0A00CB8A9F /* RecordGame.swift */; };
+		C0769A502A9F3C0A00CB8A9F /* BestGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0769A4F2A9F3C0A00CB8A9F /* BestGame.swift */; };
 		C0769A522A9F6D9700CB8A9F /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0769A512A9F6D9700CB8A9F /* DateFormatter+extension.swift */; };
 		C07D4DA22A99176200A79134 /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C07D4DA12A99176200A79134 /* YS Display-Medium.ttf */; };
 		C07D4DA42A99176E00A79134 /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C07D4DA32A99176E00A79134 /* YS Display-Bold.ttf */; };
@@ -49,7 +49,7 @@
 		AD7AFA542836189F00399704 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		C0138C9F2A978A1A00F5ACF0 /* UIImageView+setBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+setBorder.swift"; sourceTree = "<group>"; };
 		C0769A4B2A9DBF7A00CB8A9F /* StatisticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticService.swift; sourceTree = "<group>"; };
-		C0769A4F2A9F3C0A00CB8A9F /* RecordGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordGame.swift; sourceTree = "<group>"; };
+		C0769A4F2A9F3C0A00CB8A9F /* BestGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestGame.swift; sourceTree = "<group>"; };
 		C0769A512A9F6D9700CB8A9F /* DateFormatter+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
 		C07D4DA12A99176200A79134 /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
 		C07D4DA32A99176E00A79134 /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 				C08D25512A9A695300578E6E /* QuizResultsViewModel.swift */,
 				C08D25532A9A697800578E6E /* QuizQuestion.swift */,
 				C08D255B2A9BC33300578E6E /* AlertModel.swift */,
-				C0769A4F2A9F3C0A00CB8A9F /* RecordGame.swift */,
+				C0769A4F2A9F3C0A00CB8A9F /* BestGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 				C0B351262A88F85E0061DD7C /* Settings.swift in Sources */,
 				C0769A522A9F6D9700CB8A9F /* DateFormatter+extension.swift in Sources */,
 				C0B351282A8932EA0061DD7C /* UILabel+setLabel.swift in Sources */,
-				C0769A502A9F3C0A00CB8A9F /* RecordGame.swift in Sources */,
+				C0769A502A9F3C0A00CB8A9F /* BestGame.swift in Sources */,
 				C08D254D2A9A503900578E6E /* QuestionFactory.swift in Sources */,
 				AD1ABAB62831907B00B3E448 /* MovieQuizViewController.swift in Sources */,
 				AD77F5742857F8810062FB14 /* Date+Extensions.swift in Sources */,

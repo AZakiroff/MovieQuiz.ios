@@ -8,82 +8,78 @@
 import UIKit
 
 protocol StatisticServiceProtocol {
-    var totalAccuracy: Double { get }
-    var gamesCount: Int { get }
-    var bestGame: GameRecord? { get }
+    var totalAccuracy: Int { get }
+    var totalGame: Int { get }
+    var totalQuestionAmount: Int { get }
+    var totalCorrectAnswers: Int { get }
+    var bestGame: BestGame? { get }
     
-    func store(correct: Int, total: Int)
+    func store(correctAnswers: Int, questionAmount: Int)
 }
 
 final public class StatisticService: StatisticServiceProtocol {
 
-    private var userDefaults = UserDefaults.standard
     private enum Keys: String {
-        case correct, total, bestGame, gamesCount
+        case totalCorrectAnswers, totalQuestionAmount, bestGame, totalGame
     }
     
-    var totalAccuracy: Double {
-        Double(correct) / Double(total) * 100
+    var totalGame: Int {
+        get { getInteger(key: Keys.totalGame) }
+        set { setAny(value: newValue, key: Keys.totalGame) }
     }
     
-    var total: Int {
+    var totalAccuracy: Int {
+        guard totalQuestionAmount > 0 else { return 0 }
+        return Int(Double(totalCorrectAnswers) / Double(totalQuestionAmount) * 100)
+    }
+    
+    var totalQuestionAmount: Int {
+        get { getInteger(key: Keys.totalQuestionAmount) }
+        set { setAny(value: newValue, key: Keys.totalQuestionAmount) }
+    }
+    
+    var totalCorrectAnswers: Int {
+        get { getInteger(key: Keys.totalCorrectAnswers) }
+        set { setAny(value: newValue, key: Keys.totalCorrectAnswers) }
+    }
+    
+    var bestGame: BestGame? {
         get {
-            userDefaults.integer(forKey: Keys.total.rawValue)
-        }
-        set {
-            userDefaults.set(newValue, forKey: Keys.total.rawValue)
-        }
-    }
-    
-    var correct: Int {
-        get {
-            userDefaults.integer(forKey: Keys.correct.rawValue)
-        }
-        set {
-            userDefaults.set(newValue, forKey: Keys.correct.rawValue)
-        }
-    }
-    
-    var gamesCount: Int {
-        get {
-            userDefaults.integer(forKey: Keys.gamesCount.rawValue)
-        }
-        set {
-            userDefaults.set(newValue, forKey: Keys.gamesCount.rawValue)
-        }
-    }
-    
-    var bestGame: GameRecord? {
-        get {
-            guard let data = userDefaults.data(forKey: Keys.bestGame.rawValue),
-                let record = try? JSONDecoder().decode(GameRecord.self, from: data) else {
-                return .init(correct: 0, total: 0, date: Date())
-            }
-            
-            return record
+            guard let data = getData(key: Keys.bestGame) else { return nil }
+            return try! JSONDecoder().decode(BestGame.self, from: data)
         }
         set {
             guard let data = try? JSONEncoder().encode(newValue) else {
                 print("Невозможно сохранить результат")
-                
                 return
             }
-            userDefaults.set(data, forKey: Keys.bestGame.rawValue)
+            setAny(value: data, key: Keys.bestGame)
         }
     }
-    
-    func store(correct: Int, total: Int) {
-        self.correct += correct
-        self.total += total
-        self.gamesCount += gamesCount
         
-        let newBestGame = GameRecord(correct: correct, total: total, date: Date())
-        if let bestGame = bestGame {
-            if bestGame > newBestGame {
-                self.bestGame = newBestGame
-            }
+    private func getInteger(key: Keys) -> Int {
+        UserDefaults.standard.integer(forKey: key.rawValue)
+    }
+    
+    private func getData(key: Keys) -> Data? {
+        guard let data = UserDefaults.standard.data(forKey: key.rawValue) else { return nil }
+        return data
+    }
+    
+    private func setAny(value: Any, key: Keys) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
+        
+    func store(correctAnswers: Int, questionAmount: Int) {
+        totalCorrectAnswers = totalCorrectAnswers + correctAnswers
+        totalQuestionAmount = totalQuestionAmount + questionAmount
+        totalGame = totalGame + 1
+        let newBestGame = BestGame(correctAnswers: correctAnswers, questionAmount: questionAmount, date: Date())
+        
+        if let oldBestGame = bestGame {
+            bestGame = oldBestGame.whichOneIsBestGame(newBestGame)
         } else {
-            self.bestGame = newBestGame
+            bestGame = newBestGame
         }
     }
     

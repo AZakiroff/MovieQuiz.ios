@@ -33,12 +33,10 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         questionFactory?.requestNextQuestion()
         
         statisticService = StatisticService()
-        
     }
 
     func didReceiveNextQuestion(question: QuizQuestion?) {
         guard let question = question else { return }
-    
         currentQuestion = question
         let viewModel = convert(model: question)
         DispatchQueue.main.async { [weak self] in
@@ -93,33 +91,20 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     private func showNextQuestionOrResults() {
         if currentQuestionIndex == questionAmount {
-        
-            let row1 = "Ваш результат \(correctAnswers)\n"
-            var row2 = ""
-            var row3 = ""
-            var row4 = ""
-            
-            statisticService?.store(correct: correctAnswers, total: questionAmount)
-            
-            if let gamesCount = statisticService?.gamesCount {
-                row2 = "Количество сыгранных квизов: \(gamesCount > 0 ? gamesCount : 1)\n"
+            statisticService?.store(correctAnswers: correctAnswers, questionAmount: questionAmount)
+            var message = "Ваш результат \(correctAnswers)/\(questionAmount)\n"
+            if let totalGame = statisticService?.totalGame {
+                message += "Количество сыгранных квизов: \(totalGame > 0 ? totalGame : 1)\n"
             }
-            
             if let bestGame = statisticService?.bestGame {
-                let correct = bestGame.correct
-                let total = bestGame.total
-                let date = DateFormatter().dateFormating(bestGame.date)
-                row3 = "Рекорд: \(correct)/\(total) (\(date))\n"
+                message += "Рекорд: \(bestGame.correctAnswers)/\(bestGame.questionAmount) (\(DateFormatter().dateFormating(bestGame.date)))\n"
             }
-            
             if let totalAccuracy = statisticService?.totalAccuracy {
-                let row4 = "Средняя точность: \(totalAccuracy)\n"
+                message += "Средняя точность: \(totalAccuracy)%\n"
             }
-            
-            
             alertSettings = AlertModel(
                 title: "Этот раунд окончен!",
-                message: row1 + row2 + row3 + row4,
+                message: message,
                 buttonText: "Сыграть ещё раз") {
                     self.questionFactory?.requestNextQuestion()
             }
