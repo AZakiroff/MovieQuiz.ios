@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct NetworkClient {
+struct NetworkClient: NetworkRoutingProtocol {
 
     private enum NetworkError: Error {
         case codeError

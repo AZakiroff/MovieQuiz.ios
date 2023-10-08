@@ -7,12 +7,16 @@
 
 import UIKit
 
-protocol MoviesLoading {
+protocol MoviesLoadingProtocol {
     func loadMovies(handler: @escaping (Result<MostPopularMovies, Error>) -> Void)
 }
 
-struct MoviesLoader: MoviesLoading {
-    private let networkClient = NetworkClient()
+struct MoviesLoader: MoviesLoadingProtocol {
+    private let networkClient: NetworkRoutingProtocol
+    
+    init(networkClient: NetworkRoutingProtocol = NetworkClient()) {
+        self.networkClient = networkClient
+    }
     
     private var mostPopularMoviesUrl: URL {
         guard let url = URL(string: Settings.url) else {

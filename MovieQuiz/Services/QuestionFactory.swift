@@ -11,7 +11,7 @@ class QuestionFactory: QuestionFactoryProtocol {
     
     private var movies: [MostPopularMovie] = []
     
-    private let moviesLoader: MoviesLoading
+    private let moviesLoader: MoviesLoadingProtocol
     
     weak var delegate: QuestionFactoryDelegate?
     

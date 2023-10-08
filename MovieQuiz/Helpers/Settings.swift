@@ -48,7 +48,7 @@ enum Settings {
     static let alertResultButtonText: String = "Сыграть ещё раз"
     
     static let apiKey: String = "k_zcuw1ytf"
-    //static let url: String = "https://imdb-api.com/en/API/Top250Movies/" + apiKey
-    static let url: String = "https://branddelo.ru/imdb250.json" //тестовый сервер, так как ключ от Практикума не рабочий
+    static let url: String = "https://imdb-api.com/en/API/Top250Movies/" + apiKey
+    //static let url: String = "https://branddelo.ru/imdb250.json" //тестовый сервер, так как ключ от Практикума не рабочий
 }
 
