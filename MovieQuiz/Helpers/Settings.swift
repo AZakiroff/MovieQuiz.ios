@@ -24,7 +24,7 @@ enum Settings {
     
     static let questionLabelFontSize: CGFloat = 23
     static let questionLabelTextAlignment: NSTextAlignment = .center
-    static let questionLabelFontName: String = "YSDisplay-Bold" //"YSDisplay-Bold"
+    static let questionLabelFontName: String = "YSDisplay-Bold"
     
     static let posterBorderWidth: CGFloat = 8
     static let posterImageViewRadius: CGFloat = 15
@@ -32,5 +32,23 @@ enum Settings {
     static let pauseAfterResponse: Double = 1.0
     
     static let totalQuestionAmount: Int = 10
+    
+    static let yesButtonText: String = "Да"
+    static let noButtonText: String = "Нет"
+    static let navigationLeftText: String = "Вопрос"
+    
+    static let alertErrorTitle: String = "Ошибка"
+    static let alertErrorMessage: String = ""
+    static let alertErrorButtonText: String = "Сыграть ещё раз"
+    
+    static let alertResultTitle: String = "Этот раунд окончен!"
+    static let alertResultMessageTotalGames: String = "Количество сыгранных квизов"
+    static let alertResultMessageBestGame: String = "Рекорд"
+    static let alertResultMessageTotalAccuracy: String = "Средняя точность"
+    static let alertResultButtonText: String = "Сыграть ещё раз"
+    
+    static let apiKey: String = "k_zcuw1ytf"
+    static let url: String = "https://imdb-api.com/en/API/Top250Movies/" + apiKey
+    //static let url: String = "https://branddelo.ru/imdb250.json" //тестовый сервер, так как ключ от Практикума не рабочий
 }
 

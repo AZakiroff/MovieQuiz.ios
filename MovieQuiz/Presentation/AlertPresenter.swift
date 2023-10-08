@@ -27,6 +27,7 @@ class AlertPresenter: AlertPresenterProtocol {
         let action = UIAlertAction(title: alertSettings.buttonText, style: .default) { _ in
             alertSettings.completion()
         }
+        alert.view.accessibilityIdentifier = "Results"
         alert.addAction(action)
         viewController.present(alert, animated: true, completion: nil)
     }

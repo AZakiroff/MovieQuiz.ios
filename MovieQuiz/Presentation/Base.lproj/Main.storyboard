@@ -38,6 +38,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWd-yr-Qfg" userLabel="NavigationRightLabel">
                                                 <rect key="frame" x="187" y="0.0" width="187" height="22"/>
                                                 <color key="tintColor" name="YP White"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="NavigationLabel"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" name="YP White"/>
                                                 <nil key="highlightedColor"/>
@@ -49,9 +50,10 @@
                                             <constraint firstItem="v9d-mm-Q2I" firstAttribute="width" secondItem="j3y-5Y-aM9" secondAttribute="width" multiplier="0.5" id="Ufq-Ax-cWw"/>
                                         </constraints>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Kill Bill" translatesAutoresizingMaskIntoConstraints="NO" id="Shh-Ab-VPt" userLabel="Poster">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Shh-Ab-VPt" userLabel="Poster">
                                         <rect key="frame" x="0.0" y="42" width="374" height="561"/>
                                         <color key="backgroundColor" name="YP White"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Poster"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Shh-Ab-VPt" secondAttribute="height" multiplier="2:3" id="1xd-BT-Hkh"/>
                                         </constraints>
@@ -69,6 +71,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fro-Av-Eg8">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="60"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Yes"/>
                                                 <fontDescription key="fontDescription" name="YandexSansDisplay-Bold" family="Yandex Sans Display" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Button"/>
@@ -78,6 +81,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D61-RE-QSU">
                                                 <rect key="frame" x="197" y="0.0" width="177" height="60"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="No"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Button"/>
@@ -97,6 +101,12 @@
                                     <constraint firstItem="Shh-Ab-VPt" firstAttribute="top" secondItem="j3y-5Y-aM9" secondAttribute="bottom" constant="20" id="zuV-r6-Rby"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Hbb-io-eOX">
+                                <rect key="frame" x="20" y="335" width="374" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="YP Gray"/>
+                                <color key="tintColor" name="YP Black"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="YP Black"/>
@@ -109,6 +119,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Hbb-io-eOX" id="uy0-So-2rl"/>
                         <outlet property="navigationLeftLabel" destination="v9d-mm-Q2I" id="KTn-Gr-Gca"/>
                         <outlet property="navigationRightLabel" destination="EWd-yr-Qfg" id="zSo-2W-Euh"/>
                         <outlet property="noButton" destination="D61-RE-QSU" id="86k-91-o85"/>
@@ -124,9 +135,11 @@
     </scenes>
     <color key="tintColor" name="YP White"/>
     <resources>
-        <image name="Kill Bill" width="860" height="1449"/>
         <namedColor name="YP Black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YP Gray">
+            <color red="0.90200001001358032" green="0.9100000262260437" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="YP White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
